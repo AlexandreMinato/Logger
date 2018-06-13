@@ -14,7 +14,7 @@ namespace Logger.ConcreteInstancez
         private int LoteSize = 30;
         private bool _erro = false;
         private string _ApplicationName = "";
-        private string _RoutineName = "";
+        private string _ProcessName = "";
         public OtimizationLogger()
         {
             data = new List<Dictionary<LoggerLevel, string>>();
@@ -25,15 +25,15 @@ namespace Logger.ConcreteInstancez
             var config = builder.Build();
 
             _ApplicationName = config["ApplicationName"];
-            _RoutineName = config["RoutineName"];
+            _ProcessName = config["ProcessName"];
 
 
-            Writer.Write("I", _RoutineName, _ApplicationName);
+            Writer.Write("I", _ProcessName, _ApplicationName);
         }
 
         public void Dispose()
         {
-            string message = string.Format($"A rotina {_RoutineName} da Sigla {_ApplicationName}");
+            string message = string.Format($"A rotina {_ProcessName} da Sigla {_ApplicationName}");
 
 
             string tipoFinalizacao = "S";

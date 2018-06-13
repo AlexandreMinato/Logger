@@ -7,7 +7,7 @@ namespace Logger.Extension
 {
     public static class LoggerExtension
     {
-        public static ILogger AddLegacyFormater(this ILogger loggerInstance, string ApplicationName, string RoutineName)
+        public static ILogger AddLegacyFormater(this ILogger loggerInstance, string ApplicationName, string ProcessName)
         {
 
             return loggerInstance;
