@@ -7,10 +7,10 @@ using System.Text;
 
 namespace Logger.ConcreteInstance
 {
-    public class LegacyInstanceItau : ILogger
+    public class LegacyInstance : ILogger
     {
        
-        public LegacyInstanceItau()
+        public LegacyInstance()
         {
 
 
@@ -28,7 +28,7 @@ namespace Logger.ConcreteInstance
 
         public void Log(LoggerLevel type, string Message)
         {
-                        
+            throw new NotSupportedException();
         }
 
         public void Log(string aplicacao, string nome, string Texto, string Informacao)

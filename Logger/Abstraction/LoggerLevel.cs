@@ -8,13 +8,13 @@ namespace Logger.Abstraction
     public enum LoggerLevel
     {
         [Description("A")]
-        Aviso,
+        WARNING,
 
         [Description("M")]
-        Mensagem,
+        MESSAGE,
 
         [Description("E")]
-        Erro
+        CRITICAL_ERROR
 
     }
 }

@@ -6,12 +6,12 @@ using System.IO;
 
 namespace Logger.ConcreteInstance
 {
-    public class ItauBatchLogger : ILogger
+    public class LoggerInstance : ILogger
     {
         private bool _erro = false;
         private string _ApplicationName = "";
         private string _RoutineName = "";
-        public ItauBatchLogger()
+        public LoggerInstance()
         {
             var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
@@ -47,7 +47,7 @@ namespace Logger.ConcreteInstance
         }
         public void Log(LoggerLevel type, string Message)
         {
-            if (type == LoggerLevel.Erro)
+            if (type == LoggerLevel.CRITICAL_ERROR)
                 _erro = true;
             
             
