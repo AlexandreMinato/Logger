@@ -12,11 +12,11 @@ namespace LoggerUnitTest
         [TestMethod]
         public void NewLogTest()
         {
-            using (ILogger logar = LoggerFactory<LoggerInstance>.CreateInstace())
+            using (ILogger newLogger = LoggerFactory<LoggerInstance>.CreateInstace())
             {
-                logar.Log(LoggerLevel.WARNING, "Mensagem 1");
-                logar.Log(LoggerLevel.WARNING, "Mensagem 2");
-                logar.Log(LoggerLevel.CRITICAL_ERROR, "Mensagem 3 com erro");
+                newLogger.Log(LoggerLevel.WARNING, "Mensagem 1");
+                newLogger.Log(LoggerLevel.WARNING, "Mensagem 2");
+                newLogger.Log(LoggerLevel.CRITICAL_ERROR, "Mensagem 3 com erro");
             }
         }
 
@@ -24,22 +24,22 @@ namespace LoggerUnitTest
         
         public void OldLogTest()
         {
-            ILogger logarAntigo = LoggerFactory<LegacyInstance>.CreateInstace();
+            ILogger oldLogger = LoggerFactory<LegacyInstance>.CreateInstace();
 
-            logarAntigo.Log("I", "CD5", "CD5_ROTINA_1", "Iniciou o log");
-            logarAntigo.Log("A", "CD5", "Mensagem 1", "");
-            logarAntigo.Log("A", "CD5", "Mensagem 2", "");
-            logarAntigo.Log("E", "CD5", "Mensagem 3 com erro", "");
-            logarAntigo.Log("S", "CD5", "Finalizou com Sucesso", "");
+            oldLogger.Log("I", "CD5", "CD5_ROTINA_1", "Iniciou o log");
+            oldLogger.Log("A", "CD5", "Mensagem 1", "");
+            oldLogger.Log("A", "CD5", "Mensagem 2", "");
+            oldLogger.Log("E", "CD5", "Mensagem 3 com erro", "");
+            oldLogger.Log("S", "CD5", "Finalizou com Sucesso", "");
         }
         [TestMethod]
         
         [ExpectedException(typeof(NotSupportedException),"O método antigo, não pode ser chamado em uma nova classe concreta.")]
         public void TryToUseOldMethodOnNewInstance()
         {
-            using (ILogger logar = LoggerFactory<LoggerInstance>.CreateInstace())
+            using (ILogger _logNewInstance = LoggerFactory<LoggerInstance>.CreateInstace())
             {
-                logar.Log("I", "CD5", "CD5_ROTINA_1", "Iniciou o log");
+                _logNewInstance.Log("I", "CD5", "CD5_ROTINA_1", "Iniciou o log");
             }
 
         }
@@ -47,8 +47,8 @@ namespace LoggerUnitTest
         [ExpectedException(typeof(NotSupportedException), "O método novo, não pode ser chamado em uma classe concreta antiga.")]
         public void TryToUseNewMethodOnOldInstance()
         {
-            ILogger logar = LoggerFactory<LegacyInstance>.CreateInstace();
-            logar.Log(LoggerLevel.WARNING, "Mensagem 1");
+            ILogger _lodOldInstance = LoggerFactory<LegacyInstance>.CreateInstace();
+            _lodOldInstance.Log(LoggerLevel.WARNING, "Mensagem 1");
             
 
         }
