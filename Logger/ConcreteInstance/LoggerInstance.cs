@@ -1,23 +1,22 @@
 ﻿using Logger.Abstraction;
+using Logger.Extension;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Logger.ConcreteInstancez
+namespace Logger.ConcreteInstance
 {
-    public class OtimizationLogger : ILogger
+    public class LoggerInstance : ILogger
     {
-
-        private List<Dictionary<LoggerLevel, string>> data = null;
-        private int LoteSize = 30;
+                
         private bool _erro = false;
         private string _ApplicationName = "";
         private string _ProcessName = "";
-        public OtimizationLogger()
+        public LoggerInstance()
         {
-            data = new List<Dictionary<LoggerLevel, string>>();
+            
             var builder = new ConfigurationBuilder()
            .SetBasePath(Directory.GetCurrentDirectory())
            .AddJsonFile("appsettings.json");
@@ -39,13 +38,7 @@ namespace Logger.ConcreteInstancez
             string tipoFinalizacao = "S";
             string descricao = "sucesso";
 
-            foreach (var item in data)
-            {
-                
-            }
-
-
-            if (_erro)
+           if (_erro)
             {
                 tipoFinalizacao = "E";
                 descricao = "erro";
@@ -56,12 +49,15 @@ namespace Logger.ConcreteInstancez
 
         public void Log(LoggerLevel type, string Message)
         {
-            throw new NotImplementedException();
+            if (type == LoggerLevel.CRITICAL_ERROR)
+                _erro = true;
+            
+            Writer.Write(type.GetDescription(), Message, _ApplicationName);
         }
 
         public void Log(string aplicacao, string nome, string Texto, string Informacao)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
     }
 }
