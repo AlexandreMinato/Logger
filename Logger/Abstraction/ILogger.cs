@@ -6,6 +6,7 @@ namespace Logger.Abstraction
 {
     public interface ILogger : IDisposable
     {
+        ProcessStatus Status { get; }
         void Log(LoggerLevel type, string Message);
 
         [Obsolete("Este método está obsoleto, evite o uso desta sobrecarga, pode não haver compatibilidade nas próximas versões do ILogger.")]

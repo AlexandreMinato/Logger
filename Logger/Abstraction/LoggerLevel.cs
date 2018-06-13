@@ -17,4 +17,19 @@ namespace Logger.Abstraction
         CRITICAL_ERROR
 
     }
+
+    public enum ProcessStatus
+    {
+        
+        NOT_STARTED = 0,
+        RUNNING,
+
+        [Description("S")]
+        SUCCESS,
+
+        [Description("F")]
+        FALIL,
+
+        CONFIGURATION_ERROR
+    }
 }

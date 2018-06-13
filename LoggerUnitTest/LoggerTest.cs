@@ -10,15 +10,34 @@ namespace LoggerUnitTest
     public class LoggerTest
     {
         [TestMethod]
-        public void NewLogTest()
+        public void NewLogTestSuccess()
         {
             using (ILogger newLogger = LoggerFactory<LoggerInstance>.CreateInstace())
             {
+                
                 newLogger.Log(LoggerLevel.WARNING, "Mensagem 1");
                 newLogger.Log(LoggerLevel.WARNING, "Mensagem 2");
-                newLogger.Log(LoggerLevel.CRITICAL_ERROR, "Mensagem 3 com erro");
+                newLogger.Log(LoggerLevel.WARNING, "Mensagem 3");
+                Assert.AreEqual(ProcessStatus.SUCCESS, newLogger.Status);
+
             }
         }
+
+
+        public void NewLogTestFail()
+        {
+            using (ILogger newLogger = LoggerFactory<LoggerInstance>.CreateInstace())
+            {
+
+                newLogger.Log(LoggerLevel.WARNING, "Mensagem 1");
+                newLogger.Log(LoggerLevel.CRITICAL_ERROR, "Mensagem 2");
+                newLogger.Log(LoggerLevel.WARNING, "Mensagem 3");
+                Assert.AreEqual(ProcessStatus.FALIL, newLogger.Status);
+
+            }
+        }
+
+       
 
         [TestMethod]
         

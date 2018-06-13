@@ -9,7 +9,8 @@ namespace Logger.ConcreteInstance
 {
     public class LegacyInstance : ILogger
     {
-       
+        
+
         public LegacyInstance()
         {
 
@@ -17,8 +18,7 @@ namespace Logger.ConcreteInstance
             
         }
 
-        public void Testar()
-        { }
+        public ProcessStatus Status => throw new NotSupportedException();
 
         public void Dispose()
         {
