@@ -15,9 +15,11 @@ namespace LoggerUnitTest
             using (ILogger newLogger = LoggerFactory<LoggerInstance>.CreateInstace())
             {
                 
-                newLogger.Log(LoggerLevel.WARNING, "Mensagem 1");
-                newLogger.Log(LoggerLevel.WARNING, "Mensagem 2");
+                newLogger.Log(LoggerLevel.MESSAGE, "Mensagem 1");
+                newLogger.Log(LoggerLevel.MESSAGE, "Mensagem 2");
                 newLogger.Log(LoggerLevel.WARNING, "Mensagem 3");
+
+
                 Assert.AreEqual(ProcessStatus.SUCCESS, newLogger.Status);
 
             }
@@ -29,9 +31,12 @@ namespace LoggerUnitTest
             using (ILogger newLogger = LoggerFactory<LoggerInstance>.CreateInstace())
             {
 
-                newLogger.Log(LoggerLevel.WARNING, "Mensagem 1");
+                newLogger.Log(LoggerLevel.MESSAGE, "Mensagem 1");
                 newLogger.Log(LoggerLevel.CRITICAL_ERROR, "Mensagem 2");
-                newLogger.Log(LoggerLevel.WARNING, "Mensagem 3");
+                newLogger.Log(LoggerLevel.MESSAGE, "Mensagem 3");
+
+
+
                 Assert.AreEqual(ProcessStatus.FALIL, newLogger.Status);
 
             }
