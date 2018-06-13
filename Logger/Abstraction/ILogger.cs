@@ -8,7 +8,7 @@ namespace Logger.Abstraction
     {
         void Log(LoggerLevel type, string Message);
 
-        //[Obsolete("Este método está obsoleto, evite o uso desta sobrecarga, pode não haver compatibilidade nas próximas versões do ILogger.")]
+        [Obsolete("Este método está obsoleto, evite o uso desta sobrecarga, pode não haver compatibilidade nas próximas versões do ILogger.")]
         void Log(string aplicacao, string nome, string Texto, string Informacao);
     }
 }
