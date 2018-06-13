@@ -34,7 +34,7 @@ namespace LoggerUnitTest
         }
         [TestMethod]
         
-        [ExpectedException(typeof(NotSupportedException),"O novo metodo não pode ser usado em uma classe contreta antiga.")]
+        [ExpectedException(typeof(NotSupportedException),"O método antigo, não pode ser chamado em uma nova classe concreta.")]
         public void TryToUseOldMethodOnNewInstance()
         {
             using (ILogger logar = LoggerFactory<LoggerInstance>.CreateInstace())
@@ -44,7 +44,7 @@ namespace LoggerUnitTest
 
         }
         [TestMethod]
-        [ExpectedException(typeof(NotSupportedException), "O metodo antigo não pode ser usado em uma classe contreta nova.")]
+        [ExpectedException(typeof(NotSupportedException), "O método novo, não pode ser chamado em uma classe concreta antiga.")]
         public void TryToUseNewMethodOnOldInstance()
         {
             ILogger logar = LoggerFactory<LegacyInstance>.CreateInstace();
